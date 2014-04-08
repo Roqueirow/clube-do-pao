@@ -95,11 +95,27 @@ public class Membro implements Serializable {
 	}
 
 	@Override
+	public String toString() {
+		return "Membro [id=" + id + ", nome=" + nome + ", email=" + email
+				+ ", disponibilidade=" + disponibilidade + "]";
+	}
+
+	public String toJSONString() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("{\n");
+		sb.append("\tid\t:" + id + ",\n");
+		sb.append("\tnome\t:\"" + nome + "\",\n");
+		sb.append("\temail\t:\"" + email + "\",\n");
+		sb.append("\tdisponibilidade\t:" + disponibilidade + "\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
 
@@ -117,29 +133,7 @@ public class Membro implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Membro [id=" + id + ", nome=" + nome + ", email=" + email
-				+ ", disponibilidade=" + disponibilidade + "]";
-	}
-
-	public String toJSONString() {
-		StringBuffer sb = new StringBuffer();
-		sb.append("{\n");
-		sb.append("\tid\t:" + id + ",\n");
-		sb.append("\tnome\t:\"" + nome + "\",\n");
-		sb.append("\temail\t:\"" + email + "\",\n");
-		sb.append("\tdisponibilidade\t:" + disponibilidade + "\n");
-		sb.append("}");
-		return sb.toString();
 	}
 
 }
