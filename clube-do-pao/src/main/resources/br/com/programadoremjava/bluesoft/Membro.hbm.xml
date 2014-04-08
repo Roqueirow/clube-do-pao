@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="br.com.programadoremjava.bluesoft.model.Membro"
+		table="membro">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+		<property name="nome" type="string">
+			<column name="nome" length="30" not-null="true" />
+		</property>
+		<property name="email" type="string">
+			<column name="email" length="50" not-null="true" />
+		</property>
+		<property name="disponibilidade" type="java.lang.Byte">
+			<column name="disponibilidade" />
+		</property>
+	</class>
+</hibernate-mapping>
