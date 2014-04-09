@@ -16,23 +16,25 @@ public class MembroDTO implements Serializable {
 		dto.setDisponibilidade(model.getDisponibilidade());
 		return dto;
 	}
-	
-	public static Membro updateModel(MembroDTO dto, Membro model) {
+
+	public static void updateModel(MembroDTO dto, Membro model) {
 		model.setNome(dto.getNome());
 		model.setEmail(dto.getEmail());
 		model.setDisponibilidade(dto.getDisponibilidade());
-		return model;
 	}
-	
+
 	private Long id;
 	private String nome;
 	private String email;
 	private Byte disponibilidade;
 
+	private MembroDTO() { // Impedindo de ser instanciado através do new
+	}
+
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
