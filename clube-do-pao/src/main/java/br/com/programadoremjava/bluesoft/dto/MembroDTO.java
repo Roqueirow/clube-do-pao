@@ -55,12 +55,13 @@ public class MembroDTO implements Serializable {
 		this.email = email;
 	}
 
-	public Byte getDisponibilidade() {
-		return disponibilidade;
+	public String getDisponibilidade() {
+		return String.format("%5s", Integer.toString(disponibilidade, 2))
+				.replace(" ", "0");
 	}
 
-	public void setDisponibilidade(Byte disponibilidade) {
-		this.disponibilidade = disponibilidade;
+	public void setDisponibilidade(String disponibilidade) {
+		this.disponibilidade = Byte.valueOf(disponibilidade, 2);
 	}
 
 }

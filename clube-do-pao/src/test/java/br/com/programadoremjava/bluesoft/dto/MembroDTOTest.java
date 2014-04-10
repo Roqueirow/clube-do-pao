@@ -13,7 +13,7 @@ public class MembroDTOTest {
 
 		String expectedNome = "Darth Vader";
 		String expectedEmail = "darth.vader@galaticempire.gov";
-		Byte expectedDisponibilidade = Byte.valueOf("01010", 2);
+		String expectedDisponibilidade = "01010";
 
 		Membro model = new Membro();
 		model.setNome(expectedNome);
@@ -31,11 +31,11 @@ public class MembroDTOTest {
 	public void testUpdateModel() {
 		String originalNome = "Anakim Skywalker";
 		String originalEmail = "anakim.skywalker@rebelaliance.org";
-		Byte   originalDisponibilidade = Byte.valueOf("10001", 2);
+		String originalDisponibilidade = "10001";
 
 		String alteradoNome = "Darth Vader";
 		String alteradoEmail = "darth.vader@galaticempire.gov";
-		Byte   alteradoDisponibilidade = Byte.valueOf("01010", 2);
+		String alteradoDisponibilidade = "01010";
 
 		Membro model = new Membro();
 		model.setNome(originalNome);
@@ -46,16 +46,16 @@ public class MembroDTOTest {
 		assertEquals(originalNome, dto.getNome());
 		assertEquals(originalEmail, dto.getEmail());
 		assertEquals(originalDisponibilidade, dto.getDisponibilidade());
-		
+
 		dto.setNome(alteradoNome);
 		dto.setEmail(alteradoEmail);
 		dto.setDisponibilidade(alteradoDisponibilidade);
-		
+
 		MembroDTO.updateModel(dto, model);
-		
+
 		assertEquals(alteradoNome, model.getNome());
 		assertEquals(alteradoEmail, model.getEmail());
 		assertEquals(alteradoDisponibilidade, model.getDisponibilidade());
-		
+
 	}
 }

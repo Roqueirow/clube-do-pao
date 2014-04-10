@@ -21,10 +21,12 @@ public class Membro implements Serializable {
 	 * Disponibilidade do Membro do Clube do Pão:
 	 * 
 	 * Armazenar em formato de Byte sendo cada dia da semana um Bit da
-	 * composição
-	 * 
-	 * 10000 - Segunda 11000 - Segunda e Terça 11011 - Segunda, Terça, Quinta e
-	 * Sexta
+	 * composição:
+	 * <ul>
+	 * <li>10000 - Segunda</li>
+	 * <li>11000 - Segunda e Terça</li>
+	 * <li>11011 - Segunda, Terça, Quinta e Sexta</li>
+	 * </ul>
 	 */
 	private Byte disponibilidade;
 
@@ -80,8 +82,9 @@ public class Membro implements Serializable {
 	 * 
 	 * @return {@link #disponibilidade}
 	 */
-	public Byte getDisponibilidade() {
-		return disponibilidade;
+	public String getDisponibilidade() {
+		return String.format("%5s", Integer.toString(disponibilidade, 2))
+				.replace(" ", "0");
 	}
 
 	/**
@@ -90,23 +93,24 @@ public class Membro implements Serializable {
 	 * @param disponibilidade
 	 *            - A {@link #disponibilidade} a ser definida no membro
 	 */
-	public void setDisponibilidade(Byte disponibilidade) {
-		this.disponibilidade = disponibilidade;
+	public void setDisponibilidade(String disponibilidade) {
+		this.disponibilidade = Byte.valueOf(disponibilidade, 2);
 	}
 
 	@Override
 	public String toString() {
-		return "Membro [id=" + id + ", nome=" + nome + ", email=" + email
-				+ ", disponibilidade=" + disponibilidade + "]";
+		return "Membro [id=" + getId() + ", nome=" + getNome() + ", email="
+				+ getEmail() + ", disponibilidade=" + getDisponibilidade()
+				+ "]";
 	}
 
 	public String toJSONString() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("{\n");
-		sb.append("\tid\t:" + id + ",\n");
-		sb.append("\tnome\t:\"" + nome + "\",\n");
-		sb.append("\temail\t:\"" + email + "\",\n");
-		sb.append("\tdisponibilidade\t:" + disponibilidade + "\n");
+		sb.append("\tid\t:" + getId() + ",\n");
+		sb.append("\tnome\t:\"" + getNome() + "\",\n");
+		sb.append("\temail\t:\"" + getEmail() + "\",\n");
+		sb.append("\tdisponibilidade\t:\"" + getDisponibilidade() + "\"\n");
 		sb.append("}");
 		return sb.toString();
 	}
