@@ -140,4 +140,22 @@ public class Membro implements Serializable {
 		return true;
 	}
 
+	public Membro(String nome, String email, String disponibilidade) {
+		setNome(nome);
+		setEmail(email);
+		setDisponibilidade(disponibilidade);
+	}
+
+	public Membro(String nome, String email) {
+		this(nome, email, "00000");
+	}
+
+	public Membro(String nome) {
+		this(nome, "noone@nowhere.com");
+	}
+
+	public Membro() {
+		this("No Name");
+	}
+
 }
